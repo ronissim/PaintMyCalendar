@@ -1,6 +1,8 @@
-# Calendar Event Colorizer
+# Paint My Calendar
+![color_coded_example](https://github.com/ronissim/auto_colorize/assets/6366851/5f55396d-f993-47e7-b071-d7b22cfb9190)
 
-This Google Apps Script (`colorize.gs`) is designed to automatically colorize events on your Google Calendar based on predefined categories. The script uses specific criteria, such as domain matching and event visibility, to assign colors to events, providing a visual way to distinguish between different types of meetings.
+
+This Google Apps Script (`main.gs`) is designed to automatically color events on your Google Calendar based on predefined categories. The script uses specific criteria, such as domain matching to assign colors to events, providing a visual way to distinguish between different types of meetings.
 
 ## Getting Started
 
@@ -12,9 +14,6 @@ This Google Apps Script (`colorize.gs`) is designed to automatically colorize ev
    | example2.com | personal   |
    | example3.com | personal   |
 
-
-
-You can consider using Zapier to autopopulate this spreadsheet with data from your CRM or other sources [(example)](https://zapier.com/apps/excel/integrations/hubspot/11155/add-new-hubspot-list-contacts-to-excel-spreadsheet-rows).
 
 2. **Script Configuration:**
 - Adjust the constants in the script (`colorize.gs`) based on your needs.
@@ -57,20 +56,29 @@ Follow these steps to set up and run a Google Apps Script:
 - Go to [https://script.google.com/](https://script.google.com/) and create a new script.
 
 2. **Copy and Paste the Script:**
-- Copy the contents of `colorize.gs` and paste it into the script editor.
+- Copy the contents of `main.gs` 'colorlib.gs' and paste it into the script editor (in separate files).
 
 3. **Save the Script:**
 - Save the script by clicking on the floppy disk icon or `File` > `Save`.
 
 4. **Run the Script:**
-- To run the script, click on the play button (▶️) in the toolbar.
+- To run the script, click on the play button (▶️) in the toolbar - run the function colorize() in file 'main.gs'. Make sure that you copied the content of 'colorlib.gs' into a seperate file in the same project.
 
 5. **Authorize the Script:**
 - If prompted, authorize the script to access your Google Calendar.
 
 6. **Set Trigger (Optional):**
-- To automate the script, set up a trigger by clicking on the clock icon in the toolbar and following [these instructions](https://developers.google.com/apps-script/guides/triggers) or [these instructions](https://help.funnel.io/en/articles/5556473-schedule-a-google-sheet-function-to-run-on-a-time-interval)
-Have the script once every few hours.
+- To automate the script, set up a trigger by clicking on the clock icon in the toolbar and following [these instructions](https://developers.google.com/apps-script/guides/triggers) or [these instructions](https://help.funnel.io/en/articles/5556473-schedule-a-google-sheet-function-to-run-on-a-time-interval). Have the script run once every few hours.
+
+
+## Zapier Integration
+
+You can import customer, candidate, and other emails into the spreadsheet automatically using the free version of zapier (or other automation tools).
+Examples:
+1. Everytime a new company / contact is added to hubspot, add the domain to the spreadsheet with the tag "customer" [(example)](https://zapier.com/apps/excel/integrations/hubspot/11155/add-new-hubspot-list-contacts-to-excel-spreadsheet-rows).
+<img width="671" alt="zapier_example" src="https://github.com/ronissim/auto_colorize/assets/6366851/08c88f08-684a-44dc-b636-d6b0043b7ea8">
+
+
 
 
 ## Future Enhancements
