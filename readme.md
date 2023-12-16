@@ -78,7 +78,7 @@ Examples:
 1. Everytime a new company / contact is added to hubspot, add the domain to the spreadsheet with the tag "customer" [(example)](https://zapier.com/apps/excel/integrations/hubspot/11155/add-new-hubspot-list-contacts-to-excel-spreadsheet-rows).
 <img width="671" alt="zapier_example" src="https://github.com/ronissim/auto_colorize/assets/6366851/08c88f08-684a-44dc-b636-d6b0043b7ea8">
 
-
+2. Get list of people interviewing for positions from Monday / Candidate System and catagorize as HR
 
 
 ## Future Enhancements
@@ -94,5 +94,9 @@ To enhance categorization accuracy, consider adding an additional sheet to the s
 Implement a feature that recognizes manually colored calendars within Google Calendar. Once a calendar is manually colored, save the associated email domain into the script's rule book. Subsequently, any future invites from individuals with that domain will be automatically categorized according to the predefined rules, providing a seamless and personalized experience.
 
 These future enhancements aim to refine the categorization process, increase accuracy, and adapt to user preferences. Continuous refinement ensures Paint My Calendar remains a valuable tool for efficiently managing and visualizing calendar events.
+
+### 3. AI Auto Catagorise 
+
+Use LLMs to auto-categorize events
 
 ## Happy Coloring!
