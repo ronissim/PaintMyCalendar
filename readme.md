@@ -16,7 +16,7 @@ This Google Apps Script (`main.gs`) is designed to automatically color events on
 
 
 2. **Script Configuration:**
-- Adjust the constants in the script (`colorize.gs`) based on your needs.
+- Adjust the constants in the script (`main.gs`) based on your needs.
 - Access the script editor directly from [https://script.google.com/](https://script.google.com/).
 
 3. **Calendar ID:**
@@ -83,7 +83,7 @@ Examples:
 
 ## Future Enhancements
 
-As part of ongoing improvement efforts, consider implementing the following enhancements to optimize the functionality and user experience of the Calendar Event Colorizer:
+As part of ongoing improvement efforts, consider implementing the following enhancements to optimize the functionality and user experience:
 
 ### 1. Category Control Based on Titles and Domains
 
@@ -93,6 +93,6 @@ To enhance categorization accuracy, consider adding an additional sheet to the s
 
 Implement a feature that recognizes manually colored calendars within Google Calendar. Once a calendar is manually colored, save the associated email domain into the script's rule book. Subsequently, any future invites from individuals with that domain will be automatically categorized according to the predefined rules, providing a seamless and personalized experience.
 
-These future enhancements aim to refine the categorization process, increase accuracy, and adapt to user preferences. Continuous refinement ensures the Calendar Event Colorizer remains a valuable tool for efficiently managing and visualizing calendar events.
+These future enhancements aim to refine the categorization process, increase accuracy, and adapt to user preferences. Continuous refinement ensures Paint My Calendar remains a valuable tool for efficiently managing and visualizing calendar events.
 
-**Happy Coloring!**
+## Happy Coloring!
