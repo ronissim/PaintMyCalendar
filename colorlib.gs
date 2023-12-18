@@ -13,9 +13,9 @@ function processCalendarEvents(calendarIds, startDate, endDate) {
   calendarIds.forEach(calendarId => {
     const calendar = CalendarApp.getCalendarById(calendarId);
     const events = calendar.getEvents(startDate, endDate);
-
+    const defaultEventColor = getDefaultEventColorForCalendar(calendarId);
     events.forEach(calendarEvent => {
-      processCalendarEvent(calendarEvent, domainsAndCategories);
+      processCalendarEvent(calendarEvent, domainsAndCategories, defaultEventColor);
     });
   });
 }
@@ -25,8 +25,8 @@ function processCalendarEvents(calendarIds, startDate, endDate) {
  * @param {GoogleAppsScript.Calendar.CalendarEvent} calendarEvent - The calendar event to process.
  * @param {{domain: string, category: string}[]} domainsAndCategories - Array of flagged domains and categories.
  */
-function processCalendarEvent(calendarEvent, domainsAndCategories) {
-  if (SKIP_ALREADY_COLORED && hasEventBeenColored(calendarEvent)) {
+function processCalendarEvent(calendarEvent, domainsAndCategories, defaultEventColor) {
+  if (SKIP_ALREADY_COLORED && (calendarEvent.getColor() != defaultEventColor)) {
     // Skip processing if the event has already been colored
     Logger.log(`Event: ${calendarEvent.getTitle()} skipped`);
     return;
@@ -49,16 +49,6 @@ function processCalendarEvent(calendarEvent, domainsAndCategories) {
     // Process based on flagged domains and colors
     processBasedOnDomainsAndColors(calendarEvent, filteredGuestListEmails, domainsAndCategories);
   }
-}
-
-/**
- * Check if the event has already been colored in the past.
- * @param {GoogleAppsScript.Calendar.CalendarEvent} calendarEvent - The calendar event to check.
- * @returns {boolean} - True if the event has been colored, false otherwise.
- */
-function hasEventBeenColored(calendarEvent) {
-  // Check if the event's color is different from the default color
-  return calendarEvent.getColor() !== CalendarApp.EventColor.DEFAULT;
 }
 
 
@@ -179,4 +169,27 @@ function getDateOffset(offset) {
 
 function filterDomains(emails, domainsToFilter) {
   return emails.filter(email => !domainsToFilter.some(domain => email.endsWith(`@${domain}`)));
+}
+
+/**
+ * Gets the default event color of a specified calendar.
+ * @param {string} calendarId - The ID of the calendar.
+ * @return {string} - The default event color of the calendar.
+ * TODO: There has to be a better way
+ */
+function getDefaultEventColorForCalendar(calendarId) {
+  // Create a temporary event
+  var tempEvent = CalendarApp.getCalendarById(calendarId).createEvent(
+    'Get Default Color',
+    new Date(),
+    new Date(new Date().getTime() + 1 * 60 * 1000)
+  );
+
+  // Get the temporary event's color
+  var defaultColor = tempEvent.getColor();
+
+  // Delete the temporary event
+  tempEvent.deleteEvent();
+
+  return defaultColor;
 }

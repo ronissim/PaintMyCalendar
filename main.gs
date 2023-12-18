@@ -1,6 +1,5 @@
-/**
- * Go over the constants here and adjust based off of your needs
- */
+
+// Go over the constants here and adjust based off of your needs
 
 
 // If you just want to do your main calendar - the ID is just your email
