@@ -10,10 +10,10 @@ This Google Apps Script (`main.gs`) is designed to automatically color events on
     - Create a Google Spreadsheet with two sheets as outlined below.
     Note: 
       Neither are mandatory, and you can process using only one or the other
-      Column A accepts regex expressions both in the domain and in the title
+      Column A accepts regex expressions both in the domain and in the title.
       See [example here](https://docs.google.com/spreadsheets/d/e/2PACX-1vShfL4YXwzztwm_egRyWotps92Cnm8jQyCO--U0DXxesVFebnjhXQUXtrQbFYRjqeHe1NoYL9tjaU0b/pubhtml)
         - **Sheet 1 (Domains):**
-            - Column A: Event Title
+            - Column A: Domain
             - Column B: Category
                The first row should be the domain, as shown below:
 
@@ -25,7 +25,7 @@ This Google Apps Script (`main.gs`) is designed to automatically color events on
                | example3.com | personal   |
 
         - **Sheet 2 (Titles):**
-            - Column A: Domain
+            - Column A: Event Title (regex)
             - Column B: Category
                |   A          |     B      |
                |--------------|------------|
@@ -73,13 +73,13 @@ Follow these steps to set up and run a Google Apps Script:
 - Go to [https://script.google.com/](https://script.google.com/) and create a new script.
 
 2. **Copy and Paste the Script:**
-- Copy the contents of `main.gs` 'colorlib.gs' and paste it into the script editor (in separate files).
+- Copy the contents of `main.gs` & `colorLib.gs` and paste it into the script editor (in separate files).
 
 3. **Save the Script:**
 - Save the script by clicking on the floppy disk icon or `File` > `Save`.
 
 4. **Run the Script:**
-- To run the script, click on the play button (▶️) in the toolbar - run the function colorize() in file 'main.gs'. Make sure that you copied the content of 'colorlib.gs' into a seperate file in the same project.
+- To run the script, click on the play button (▶️) in the toolbar - run the function colorize() in file `main.gs`. Make sure that you copied the content of `colorLib.gs` into a seperate file in the same project.
 
 5. **Authorize the Script:**
 - If prompted, authorize the script to access your Google Calendar.
@@ -102,17 +102,13 @@ Examples:
 
 As part of ongoing improvement efforts, consider implementing the following enhancements to optimize the functionality and user experience:
 
-### 1. Category Control Based on Titles and Domains
-
-To enhance categorization accuracy, consider adding an additional sheet to the spreadsheet that correlates meeting titles with associated domains. This extension will provide a more granular control mechanism, enabling the script to categorize events based on both titles and participants' email domains.
-
-### 2. Auto-Categorization for Manually Colored Calendars
+### 1. Auto-Categorization for Manually Colored Calendars
 
 Implement a feature that recognizes manually colored calendars within Google Calendar. Once a calendar is manually colored, save the associated email domain into the script's rule book. Subsequently, any future invites from individuals with that domain will be automatically categorized according to the predefined rules, providing a seamless and personalized experience.
 
 These future enhancements aim to refine the categorization process, increase accuracy, and adapt to user preferences. Continuous refinement ensures Paint My Calendar remains a valuable tool for efficiently managing and visualizing calendar events.
 
-### 3. AI Auto Catagorise 
+### 2. AI Auto Catagorise 
 
 Use LLMs to auto-categorize events
 

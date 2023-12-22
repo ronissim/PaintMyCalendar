@@ -87,7 +87,6 @@ function processEvent(calendarEvent, domainsAndCategories, titlesAndCategories) 
  * @returns {string | null} - The category of the matched rule, or null if no match is found.
  */
 function processBasedOnTitles(calendarEvent, titlesAndCategories) {
-  // Get the event title without converting to lowercase
   const eventTitle = calendarEvent.getTitle();
 
   // Iterate through the categories in the order they appear in CATEGORY_TO_COLOR

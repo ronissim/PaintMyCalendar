@@ -5,7 +5,7 @@
 const CALENDAR_IDS = ["me@example.com"];
 
 // Create a spreadsheet with two columns, the first row being the title: A: domain	B: category
-// You can also add a second sheet in the same spreadsheet to assign category based off of Event Title regex match
+// You can also add a second sheet in the same spreadsheet to assign category based off of Event Title regex match: A: title.  b: category
 const SPREADSHEET_URL = "https://docs.google.com/spreadsheets/d/1AAAAAAAAAAAAAAU/";
 
 // Most likely doesn't need to be changed - the index of which sheet in the spreadsheet corresponds to which set of rules
