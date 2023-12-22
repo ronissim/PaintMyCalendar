@@ -1,15 +1,18 @@
-
 // Go over the constants here and adjust based off of your needs
 
 
 // If you just want to do your main calendar - the ID is just your email
 const CALENDAR_IDS = ["me@example.com"];
 
-
-/** Create a spreadsheet with two columns, the first row being the title: A: domain	B: category
- */
-
+// Create a spreadsheet with two columns, the first row being the title: A: domain	B: category
+// You can also add a second sheet in the same spreadsheet to assign category based off of Event Title regex match
 const SPREADSHEET_URL = "https://docs.google.com/spreadsheets/d/1AAAAAAAAAAAAAAU/";
+
+// Most likely doesn't need to be changed - the index of which sheet in the spreadsheet corresponds to which set of rules
+const SHEET_INDEX = {
+  DOMAINS: 0,
+  TITLES: 1,
+};
 
 /* 
  Available colors:
@@ -30,18 +33,19 @@ const CATEGORY_TO_COLOR = {
   "hr": { color: CalendarApp.EventColor.CYAN }
 };
 
-// If an event has already been colored then skip it's recoloring.
+/*
+If an event has already been colored then skip it's recoloring.
 // Useful if you want to be able to manually change the color and not have overridden at the next run of the script.
-// Also makes the script run faster for obvious reasons
+Also makes the script run faster for obvious reasons
+*/
 const SKIP_ALREADY_COLORED = true;
 
-// email domains to totally ignore, like notetakers and google resources
+// Email domains to totally ignore, like notetakers and google resources
 const FILTERED_DOMAINS = ["resource.calendar.google.com", "gong.io"];
 
 
 function colorize(){
   const startDate = getDateOffset(-7);
   const endDate = getDateOffset(30); 
-  processCalendarEvents(CALENDAR_IDS,startDate, endDate)
+  processCalendarEvents(CALENDAR_IDS,startDate, endDate, SPREADSHEET_URL)
 }
-

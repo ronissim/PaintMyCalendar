@@ -2,17 +2,34 @@
 ![color_coded_example](https://github.com/ronissim/auto_colorize/assets/6366851/5f55396d-f993-47e7-b071-d7b22cfb9190)
 
 
-This Google Apps Script (`main.gs`) is designed to automatically color events on your Google Calendar based on predefined categories. The script uses specific criteria, such as domain matching to assign colors to events, providing a visual way to distinguish between different types of meetings.
+This Google Apps Script (`main.gs`) is designed to automatically color events on your Google Calendar based on predefined categories. The script uses specific criteria, such as domain and title matching to assign colors to events, providing a visual way to distinguish between different types of meetings.
 
 ## Getting Started
 
-1. **Spreadsheet Setup:** Create a Google Spreadsheet with two columns: A for the domain and B for the category. The first row should be the title, as shown below:
-   |   A          |     B      |
-   |--------------|------------|
-   | domain       | Category   |
-   | entitle.io   | important  |
-   | example2.com | personal   |
-   | example3.com | personal   |
+1. **Create a Google Spreadsheet:**
+    - Create a Google Spreadsheet with two sheets as outlined below.
+    Note: 
+      Neither are mandatory, and you can process using only one or the other
+      Column A accepts regex expressions both in the domain and in the title
+      See [example here](https://docs.google.com/spreadsheets/d/e/2PACX-1vShfL4YXwzztwm_egRyWotps92Cnm8jQyCO--U0DXxesVFebnjhXQUXtrQbFYRjqeHe1NoYL9tjaU0b/pubhtml)
+        - **Sheet 1 (Domains):**
+            - Column A: Event Title
+            - Column B: Category
+               The first row should be the domain, as shown below:
+
+               |   A          |     B      |
+               |--------------|------------|
+               | Domain       | Category   |
+               | entitle.io   | important  |
+               | example2.com | personal   |
+               | example3.com | personal   |
+
+        - **Sheet 2 (Titles):**
+            - Column A: Domain
+            - Column B: Category
+               |   A          |     B      |
+               |--------------|------------|
+               | Title        | Category   |
 
 
 2. **Script Configuration:**
