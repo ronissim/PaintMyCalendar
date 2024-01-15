@@ -27,9 +27,8 @@ function processCalendarEvents(calendarIds, startDate, endDate, spreadsheet_url)
 function processCalendar(calendarId, startDate, endDate, domainsAndCategories, titlesAndCategories) {
   const calendar = CalendarApp.getCalendarById(calendarId);
   const events = calendar.getEvents(startDate, endDate);
-  const defaultColor = getDefaultEventColorForCalendar(calendarId);
   events.forEach(calendarEvent => {
-    if (SKIP_ALREADY_COLORED && (calendarEvent.getColor() != defaultColor)) {
+    if (SKIP_ALREADY_COLORED && (calendarEvent.getColor() != "")) {
     // Skip processing if the event has already been colored
     Logger.log(`Event: ${calendarEvent.getTitle()} skipped`);
     return;
@@ -139,28 +138,6 @@ function filterDomains(emails, domainsToFilter) {
   return emails.filter(email => !domainsToFilter.some(domain => email.endsWith(`@${domain}`)));
 }
 
-/**
- * Gets the default event color of a specified calendar.
- * @param {string} calendarId - The ID of the calendar.
- * @return {string} - The default event color of the calendar.
- * TODO: There has to be a better way
- */
-function getDefaultEventColorForCalendar(calendarId) {
-  // Create a temporary event
-  var tempEvent = CalendarApp.getCalendarById(calendarId).createEvent(
-    'Get Default Color',
-    new Date(),
-    new Date(new Date().getTime() + 1 * 60 * 1000)
-  );
-
-  // Get the temporary event's color
-  var defaultColor = tempEvent.getColor();
-
-  // Delete the temporary event
-  tempEvent.deleteEvent();
-
-  return defaultColor;
-}
 
 /**
  * Get the guest list for a calendar event, including creators, and filter the emails based on specified domains.
